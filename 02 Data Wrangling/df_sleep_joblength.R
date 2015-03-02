@@ -10,8 +10,6 @@ dfb <- data.frame(fromJSON(getURL(URLencode('129.152.144.84:5001/rest/native/?qu
 
 dfc <- right_join(dfa, dfb, by="ID_NUMBER")
 
-dfc %>% select(YEARS_IN_PRESENT_JOB, SLEEP_LENGTH, SLEEP_QUALITY) %>% group_by(SLEEP_QUALITY, SLEEP_LENGTH)%>% summarise(avg_years=mean(YEARS_IN_PRESENT_JOB)) %>% ggplot(aes(x=SLEEP_LENGTH, y=avg_years, color=SLEEP_QUALITY)) + geom_point() + ggtitle('Years Worked in Comparison to Sleep Length and Quality') +theme(plot.title=element_text(size=20,face="bold",vjust=1,lineheight=0.6)) + labs(x = 'Sleep Length (Years)', y = 'Average Years Worked') + scale_color_discrete(name="Sleep Quality")
 
-dfc %>% select(YEARS_IN_PRESENT_JOB, SLEEP_LENGTH, SLEEP_QUALITY) %>% group_by(SLEEP_QUALITY) %>% ggplot(aes(x=SLEEP_LENGTH, y=YEARS_IN_PRESENT_JOB, color=SLEEP_QUALITY)) + geom_point() + ggtitle('Years Worked in Comparison to Sleep Length and Quality') +theme(plot.title=element_text(size=20,face="bold",vjust=1,lineheight=0.6)) + labs(x = 'Sleep Length (Years)', y = 'Years Worked') + scale_color_discrete(name="Sleep Quality") + scale_y_continuous("YEARS_IN_PRESENT_JOB", c("10","20","30","40")) 
+dfc %>% select(YEARS_IN_PRESENT_JOB, SLEEP_LENGTH, SLEEP_QUALITY) %>% group_by(SLEEP_QUALITY) %>% ggplot(aes(as.numeric(as.character(SLEEP_LENGTH)), as.numeric(as.character(YEARS_IN_PRESENT_JOB)),  color = SLEEP_QUALITY))+geom_point() + ggtitle('Years Worked in Comparison to Sleep Length and Quality') +theme(plot.title=element_text(size=20,face="bold",vjust=1,lineheight=0.6)) + labs(x = 'Sleep Length (Years)', y = 'Years Worked') + geom_jitter(alpha=0.5,aes(color=SLEEP_QUALITY),position=position_jitter(width=.2)) + scale_colour_tableau()
 
-ggplot(dfc,aes(YEARS_IN_PRESENT_JOB, SLEEP_LENGTH))+geom_point(color="firebrick") + coord_cartesian(xlim=c(0,10))
