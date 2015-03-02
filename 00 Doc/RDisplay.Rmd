@@ -1,0 +1,34 @@
+---
+title: "DV_RProject 3"
+output: html_document
+---
+
+Our data set is based off of a culmination of data compiled from employees who have worked for the railroad. 
+
+**members:** Andrea Curo, Dora Cheng, Sonam Shah
+
+#Head subset of data
+```{r fig.width=10, fig.height=10}
+source("../01 Data/data.R", echo= TRUE)
+```
+
+#Data wrangling sets and Coordinating Visualizations
+###Different Alertness Levels Compared to Average Caffeine LEvel
+```{r fig.width=10, fig.height=10}
+source("../02 Data Wrangling/df_alertness_caffeine.R", echo= TRUE)
+```
+
+###Different Alertness Levels Compared to Schedule Type
+```{r fig.width=10, fig.height=10}
+source("../02 Data Wrangling/df_alertness_schedtype.R", echo= TRUE)
+```
+
+###Sleep Quality Compared to Activity Type
+```{r fig.width=10, fig.height=10}
+source("../02 Data Wrangling/df_sleep_activity.R", echo= TRUE)
+```
+
+###Sleep Quality and Length Compared to Job Length
+```{r fig.width=10, fig.height=10}
+source("../02 Data Wrangling/df_sleep_joblength.R", echo= TRUE)
+```
