@@ -12,3 +12,10 @@ dfc <- data.frame(fromJSON(getURL(URLencode('129.152.144.84:5001/rest/native/?qu
 
 dfd <- inner_join(dfa, dfb, by="ID_NUMBER")
 dfe <- left_join(dfa, dfb, by="ID_NUMBER")
+
+#g <- ggplot(dfd,aes(x=SCHEDTYPE, y=ALERTNESS))
+#g+geom_jitter(alpha=0.5,aes(color=SCHEDTYPE),position=position_jitter(width=.2))
+
+
+dfd %>% select(SCHEDTYPE, ALERTNESS) %>% group_by(SCHEDTYPE) %>% ggplot(aes(x=SCHEDTYPE, y=ALERTNESS)) + geom_jitter(alpha=0.5,aes(color=SCHEDTYPE),position=position_jitter(width=.2)) + ggtitle('Alertness of Different Types of Workers')+theme(plot.title=element_text(size=20,face="bold",vjust=1,lineheight=0.6)) + labs(x = 'Schedule Type of Employees', y = 'Alertness Levels') + scale_color_discrete(name="Schedule Types")
+
