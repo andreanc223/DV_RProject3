@@ -11,7 +11,12 @@ dfc <- data.frame(fromJSON(getURL(URLencode('129.152.144.84:5001/rest/native/?qu
 
 dfe <- left_join(dfa, dfc, by="ID_NUMBER")
 
-#Average Caffeine Level vs Alertness
-poop <- dfd %>% select(ID_NUMBER, ALERTNESS, CAFFEINE) %>% group_by(ALERTNESS) %>% summarise(avg=mean(CAFFEINE))
-g <- ggplot(poop, aes(x=ALERTNESS, y=avg)) + geom_point()
-g + theme(legend.position="none") + labs(x="Alertness Level", y="Average Caffeine Level", title="Average Caffeine Level vs Alertness")
+#different activity types
+dfe %>% select(ID_NUMBER, ACTIVITY) %>% group_by(ACTIVITY) %>% count(ACTIVITY)
+g <- ggplot(dfe, aes(ACTIVITY)) + geom_bar()
+g + geom_bar(width=.7) + theme(legend.position="none") + labs(x="Activity Type", y="Count", title="Count of Different Activity Types")
+
+#sleep quality different activity types
+poop <- dfe %>% select(ID_NUMBER, SLEEP_QUALITY, ACTIVITY) %>% group_by(ACTIVITY) %>% summarise(avg=mean(SLEEP_QUALITY))
+g <- ggplot(poop, aes(x=ACTIVITY, y=avg)) + geom_point()
+g + theme(legend.position="none") + labs(x="Activity Type", y="Avg Quality of Sleep", title="Quality of Sleep with Different Activity Types")
