@@ -32,3 +32,7 @@ source("../02 Data Wrangling/df_sleep_activity.R", echo= TRUE)
 ```{r fig.width=10, fig.height=10}
 source("../02 Data Wrangling/df_sleep_joblength.R", echo= TRUE)
 ```
+
+```{r fig.width=10, fig.height=10}
+source("../01 Data/categorical.R", echo= TRUE)
+```
