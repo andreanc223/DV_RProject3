@@ -13,22 +13,22 @@ source("../01 Data/data.R", echo= TRUE)
 ```
 
 #Data wrangling sets and Coordinating Visualizations
-###Different Alertness Levels Compared to Average Caffeine LEvel
+###Different Alertness Levels Compared to Average Caffeine Level (inner join)
 ```{r fig.width=10, fig.height=10}
-source("../02 Data Wrangling/df_alertness_caffeine.R", echo= TRUE)
+source("../02 Data Wrangling/df_alert_caffeine.R", echo= TRUE)
 ```
 
-###Different Alertness Levels Compared to Schedule Type
+###Different Alertness Levels Compared to Schedule Type (inner join)
 ```{r fig.width=10, fig.height=10}
 source("../02 Data Wrangling/df_alertness_schedtype.R", echo= TRUE)
 ```
 
-###Sleep Quality Compared to Activity Type
+###Sleep Quality Compared to Activity Type (left join)
 ```{r fig.width=10, fig.height=10}
 source("../02 Data Wrangling/df_sleep_activity.R", echo= TRUE)
 ```
 
-###Sleep Quality and Length Compared to Job Length
+###Sleep Quality and Length Compared to Job Length (right join)
 ```{r fig.width=10, fig.height=10}
 source("../02 Data Wrangling/df_sleep_joblength.R", echo= TRUE)
 ```
